@@ -42,10 +42,6 @@ https://vandreborba.github.io/renomeador_pontos_kml/
 2. Clique em “Unificar e Baixar”.
 3. O arquivo `kml_unificado.kml` será baixado com todos os pontos combinados e já renomeados.
 
-Observações:
-- Estilos e dados internos dos Placemarks são mantidos; se estilos estiverem definidos em nível de `Document`, podemos estender a cópia desses estilos se necessário.
-- Caso deseje deduplicar pontos (por coordenada, nome ou outro critério), abra uma issue com a regra desejada.
-
 ## Repositório
 Acesse o código-fonte e contribua: [renomeador_pontos_kml](https://github.com/vandreborba/renomeador_pontos_kml)
 
