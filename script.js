@@ -2,6 +2,8 @@ function processarKML() {
   const input = document.getElementById('fileInput');
   const status = document.getElementById('status');
 
+  if (!input || !status) return;
+
   if (!input.files[0]) {
     status.innerHTML = "<span class='text-danger'>⚠️ Por favor, selecione um arquivo KML.</span>";
     return;
@@ -30,25 +32,12 @@ function processarKML() {
     }
 
     const placemarks = xml.getElementsByTagName("Placemark");
-    
     if (placemarks.length === 0) {
       status.innerHTML = "<span class='text-warning'>⚠️ Nenhum ponto (Placemark) encontrado no arquivo KML.</span>";
       return;
     }
 
-    let alterados = 0;
-
-    for (let placemark of placemarks) {
-      const desc = placemark.getElementsByTagName("description")[0];
-      const name = placemark.getElementsByTagName("name")[0];
-      if (desc && name) {
-        const match = desc.textContent.match(/CODIGO DO ENDERECO:\s*(\d+)/);
-        if (match) {
-          name.textContent = match[1];
-          alterados++;
-        }
-      }
-    }
+    const alterados = renomearPontosPorCodigo(xml);
 
     const serializer = new XMLSerializer();
     let kmlString = serializer.serializeToString(xml);
@@ -68,6 +57,24 @@ function processarKML() {
   };
 
   reader.readAsText(file);
+}
+
+// Deixa a lógica de renomeação reutilizável para outros fluxos (ex.: unificação)
+function renomearPontosPorCodigo(xmlDocument) {
+  let alterados = 0;
+  const placemarks = xmlDocument.getElementsByTagName("Placemark");
+  for (let placemark of placemarks) {
+    const desc = placemark.getElementsByTagName("description")[0];
+    const name = placemark.getElementsByTagName("name")[0];
+    if (desc && name) {
+      const match = desc.textContent.match(/CODIGO DO ENDERECO:\s*(\d+)/);
+      if (match) {
+        name.textContent = match[1];
+        alterados++;
+      }
+    }
+  }
+  return alterados;
 }
 
 function corrigirEstruturaKML(kmlString, originalText) {
