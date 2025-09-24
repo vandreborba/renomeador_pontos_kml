@@ -1,6 +1,6 @@
 # Renomeador de Pontos KML
 
-Este projeto foi desenvolvido para apoiar servidores de agências do IBGE no trabalho de campo do CNEFE. Ao baixar arquivos KML pelo sistema do IBGE, a estrutura dos pontos nem sempre está otimizada para facilitar a identificação e manipulação durante as atividades externas. Este editor realiza ajustes automáticos no arquivo, tornando o processo mais ágil e eficiente.
+Este projeto foi desenvolvido para apoiar profissionais no trabalho de campo com arquivos KML. Ao trabalhar com arquivos KML contendo pontos geográficos, a estrutura dos pontos nem sempre está otimizada para facilitar a identificação e manipulação durante as atividades externas. Este editor realiza ajustes automáticos no arquivo, tornando o processo mais ágil e eficiente.
 
 ## Privacidade
 Privacidade total: Nenhum dado é enviado ou armazenado em servidores. Todo o processamento ocorre localmente no seu navegador, garantindo segurança e confidencialidade dos arquivos.
